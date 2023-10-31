@@ -184,3 +184,24 @@ td {
     filter: grayscale();
     cursor: auto;
 }
+
+@media (max-width: 540px) {    
+    main{
+        display: flex;
+        flex-direction: column-reverse;
+        height: 100%;
+    }
+
+    .add__todo-form{
+        flex:1;
+        width: 100%;
+    }
+
+    .list__todo{
+        flex: 2;
+        width: 100%;
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+}

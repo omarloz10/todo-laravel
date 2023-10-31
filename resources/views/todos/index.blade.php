@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{{ asset('img/logo.jpg') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
+
     <title>Todo con Laravel</title>
 </head>
 
@@ -14,15 +16,13 @@
         <nav class="navbar">
             <div class="navbar__logo">
                 <a href="/">
-                    <img src="https://loremflickr.com/640/360" alt="Logo" />
+                    <img src="{{ asset('img/logo.jpg') }}" alt="Logo" />
                 </a>
             </div>
 
             <div class="navbar__nav">
                 <ul class="navbar__nav-list">
-                    <li class="navbar__nav-link">
-                        <a href="">Home</a>
-                    </li>
+                    
                     <li class="navbar__nav-link">
                         <a href="">Todo</a>
                     </li>
@@ -73,7 +73,8 @@
                                             @csrf
                                             @method('PUT')
                                             <button class="button_complete" {{ $todo->status == 0 ? '' : 'disabled' }}>
-                                                <img src="{{asset('img/check.svg')}}" alt="" width="28px" height="28px">
+                                                <img src="{{ asset('img/check.svg') }}" alt="" width="28px"
+                                                    height="28px">
                                             </button>
                                         </form>
                                         <br>
@@ -81,7 +82,8 @@
                                             @csrf
                                             @method('DELETE')
                                             <button class="button_delete">
-                                                <img src="{{asset('img/trash.svg')}}" alt="" width="28px" height="28px">
+                                                <img src="{{ asset('img/trash.svg') }}" alt="" width="28px"
+                                                    height="28px">
                                             </button>
                                         </form>
 
@@ -101,20 +103,21 @@
             </div>
         </section>
 
-
         <section class="add__todo-form">
             <div class="container">
+
                 @if (session('success'))
-                    <div class="mesagge success">
+                    <div class="mesagge success" id="mesagge">
                         {{ session('success') }}
                     </div>
                 @endif
 
                 @error('title')
-                    <div class="mesagge error">
+                    <div class="mesagge error" id="mesagge">
                         {{ $message }}
                     </div>
                 @enderror
+
                 <h2>AGREGAR UNA NUEVA TAREA</h2>
                 <form action="{{ route('save') }}" method="POST">
                     @csrf
@@ -130,6 +133,7 @@
     <footer class="footer">
         &copy; Creado por Omar Lozano
     </footer>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>
